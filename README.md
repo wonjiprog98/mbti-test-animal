@@ -1,2 +1,2 @@
 # mbti-test-animal
-mbti 
+mbti animal test
