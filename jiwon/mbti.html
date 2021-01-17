@@ -34,7 +34,7 @@
           aria-valuemax="100"
         ></div>
       </div>
-      <h2 class="mt-5 text-center">문제</h2>
+      <h2 id="title" class="mt-5 text-center">문제</h2>
       <input type="hidden" id="type" value="EI" />
       <button
         id="A"
@@ -42,7 +42,7 @@
         class="btn btn-outline-success mt-5"
         onclick="start();"
       >
-        테스트 시작하기
+        E
       </button>
       <button
         id="B"
@@ -50,7 +50,7 @@
         class="btn btn-outline-success mt-5"
         onclick="start();"
       >
-        테스트 시작하기
+        I
       </button>
     </article>
     <input type="hidden" id="EI" value="0" />
@@ -68,15 +68,34 @@
       crossorigin="anonymous"
     ></script>
     <script>
+      let num = 1;
+
+      const q = {
+        1: { title: "문제 1번", type: "EI", A: "E", B: "I" },
+        2: { title: "문제 2번", type: "EI", A: "E", B: "I" },
+        3: { title: "문제 3번", type: "EI", A: "E", B: "I" },
+      };
       function start() {
         $(".start").hide();
         $(".question").show();
+        next();
       }
       $("#A").click(() => {
         let type = $("#type").val();
         let preValue = $(`#${type}`).val();
         $(`#${type}`).val(+preValue + 1);
+        next();
       });
+      $("#B").click(() => {
+        next();
+      });
+      function next() {
+        $("#title").html(q[num]["title"]);
+        $("#type").val(q[num]["type"]);
+        $("#A").val(q[num]["A"]);
+        $("#B").val(q[num]["B"]);
+        num++;
+      }
     </script>
   </body>
 </html>
